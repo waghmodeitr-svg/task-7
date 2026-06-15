@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .board {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    border: 4px solid #333;
+    width: 480px;
+  }
+  .square {
+    width: 60px;
+    height: 60px;
+  }
+  .light { background-color: white; }
+  .dark { background-color: black; }
+</style>
+</head>
+<body>
+
+<div class="board" id="chessboard"></div>
+
+<script>
+  const board = document.getElementById('chessboard');
+  for (let i = 0; i < 64; i++) {
+    const square = document.createElement('div');
+    // Math calculates alternating colors correctly across rows
+    const isLight = (i + Math.floor(i / 8)) % 2 === 0;
+    square.className = 'square ' + (isLight ? 'light' : 'dark');
+    board.appendChild(square);
+  }
+</script>
+
+</body>
+</html>
